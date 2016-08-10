@@ -55,3 +55,7 @@ package 'uchiwa' do
   version node['uchiwa']['version']
   notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
 end
+
+service 'uchiwa' do
+  action :nothing
+end

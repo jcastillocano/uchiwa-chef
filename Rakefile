@@ -33,7 +33,9 @@ task lint: ['lint:ruby', 'lint:chef']
 # unit testing: ChefSpec
 desc 'Run RSpec and ChefSpec unit tests'
 RSpec::Core::RakeTask.new(:unit) do |rspec|
-  rspec.rspec_opts = '--color  --format documentation --format html --out reports/rspec_results.html --format RspecJunitFormatter --out reports/rspec_results.xml'
+  rspec.rspec_opts = '--color  --format documentation --format html ' \
+                     '--out reports/rspec_results.html --format RspecJunitFormatter ' \
+                     '--out reports/rspec_results.xml'
 end
 
 # integration testing: Test Kitchen

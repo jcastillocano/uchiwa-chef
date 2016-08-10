@@ -19,9 +19,9 @@ group :unit do
 end
 
 group :integration do
-  gem 'test-kitchen', git: 'https://github.com/jcastillocano/test-kitchen.git'
+  gem 'test-kitchen'
   gem 'kitchen-vagrant', '~> 0.11'
-  gem 'kitchen-ec2', git: 'https://github.com/jcastillocano/kitchen-ec2.git', branch: 'dedicated_tenancy'
+  gem 'kitchen-ec2'
   gem 'kitchen-transport-sshtar'
   gem 'serverspec', '~> 2.0'
 end

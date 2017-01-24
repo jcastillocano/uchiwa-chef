@@ -37,11 +37,11 @@ when 'debian'
 when 'rhel'
   package_options = '--nogpgcheck'
   branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
-  sufix = node['uchiwa']['yum_repo_url_sufix'].nil? ? "#{branch}/el/#{platform_version}/$basearch/" : node['uchiwa']['yum_repo_url_sufix']
+  suffix = node['uchiwa']['yum_repo_url_suffix'].nil? ? "#{branch}/el/#{platform_version}/$basearch/" : node['uchiwa']['yum_repo_url_suffix']
 
   yum_repository 'uchiwa' do
     description 'Uchiwa repository'
-    baseurl "#{node['uchiwa']['yum_repo_url']}/#{sufix}"
+    baseurl "#{node['uchiwa']['yum_repo_url']}/#{suffix}"
     gpgcheck false
     only_if { node['uchiwa']['add_repo'] }
   end

@@ -61,6 +61,26 @@ describe 'uchiwa::default' do
     end
   end
 
+  context 'When all attributes are default, on a centos 7.2, using repo custom url install method' do
+    let(:chef_run) do
+      ChefSpec::SoloRunner.new(platform: 'centos', version: '7.2.1511', platform_family: 'rhel') do |node|
+        node.set['uchiwa']['install_method'] = 'repo'
+        node.set['uchiwa']['yum_repo_url'] = 'http://different.repository.com'
+        node.set['uchiwa']['yum_repo_url_sufix'] = 'new/sufix/url'
+      end.converge(described_recipe)
+    end
+
+    it 'converges successfully' do
+      expect { chef_run }.to_not raise_error
+    end
+
+    it 'creates uchiwa repo' do
+      expect(chef_run).to create_yum_repository('uchiwa').with(
+        baseurl: 'http://different.repository.com/new/sufix/url'
+      )
+    end
+  end
+
   context 'When all attributes are default, on a ubuntu 16.04, using repo install method' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04', platform_family: 'debina') do |node|

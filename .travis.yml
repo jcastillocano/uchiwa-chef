@@ -18,6 +18,4 @@ before_script:
   - chef exec berks install
 
 script:
- - chef exec rake lint
- - chef exec rake unit
- - chef exec rake integration
+ - chef exec rake default

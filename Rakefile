@@ -77,5 +77,5 @@ task package: ['package:local']
 desc 'Run all integration tests'
 task integration: ['integration:vagrant']
 
-desc 'Run all jenkins tests'
-task jenkins: %w(lint unit)
+desc 'Run all travis tests'
+task default: %w(lint unit integration)

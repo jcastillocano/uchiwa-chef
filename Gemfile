@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'stove'
 
 group :lint do
   gem 'rubocop', '~> 0.18'

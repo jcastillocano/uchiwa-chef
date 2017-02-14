@@ -51,29 +51,6 @@ namespace :integration do
   end
 end
 
-namespace :package do
-  require 'logify'
-  require 'stove/mash'
-  require 'stove/packager'
-  require 'stove/cookbook'
-  require 'stove/cookbook/metadata'
-  desc 'Pretendo hacer algo con stove ...'
-  task :local, :path do |_t, args|
-    path = args[:path] || Dir.pwd
-    puts "Path : #{path}"
-    UNSET_VALUE = Object.new
-    cookbook = Stove::Cookbook.new(Dir.pwd)
-    puts "Cookbook name: #{cookbook.name}"
-    puts "Cookbook version : #{cookbook.version}"
-    File.open("#{path}/#{cookbook.name}-#{cookbook.version}.tar.gz", 'w') do |package|
-      package.write(cookbook.tarball(true).read)
-    end
-  end
-end
-
-desc 'Publish package'
-task package: ['package:local']
-
 desc 'Run all integration tests'
 task integration: ['integration:vagrant']
 

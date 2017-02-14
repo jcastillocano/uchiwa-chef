@@ -7,12 +7,8 @@ namespace :lint do
 
   desc 'Run Ruby syntax/lint checks'
   RuboCop::RakeTask.new(:ruby) do |task|
-    task.requires = ['rubocop/formatter/checkstyle_formatter']
     task.options = [
-      '--no-color',
-      '--require', 'rubocop/formatter/checkstyle_formatter',
-      '--format', 'RuboCop::Formatter::CheckstyleFormatter',
-      '--out', 'reports/checkstyle.xml'
+      '--no-color'
     ]
     # don't abort rake on failure
     task.fail_on_error = false
@@ -55,4 +51,5 @@ desc 'Run all integration tests'
 task integration: ['integration:vagrant']
 
 desc 'Run all travis tests'
-task default: %w(lint unit integration)
+# task default: %w(lint unit integration)
+task default: %w(lint unit)

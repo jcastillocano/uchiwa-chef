@@ -6,6 +6,8 @@ addons:
       - chef-stable-precise
     packages:
       - chefdk
+    code_climate:
+        repo_token: abe55c34d937fb17eaa7d459e20ad0e1359108d704eef0490a55c471c2bafb88
 
 services: docker
 

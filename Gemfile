@@ -4,8 +4,8 @@ gem 'rake'
 
 group :lint do
   gem 'rubocop', '~> 0.18'
-  gem 'rubocop-checkstyle_formatter'
   gem 'foodcritic', '~> 3.0'
+  gem 'rubocop-checkstyle_formatter'
 end
 
 group :unit, :integration do
@@ -18,9 +18,9 @@ group :unit do
 end
 
 group :integration do
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant', '~> 0.11'
   gem 'kitchen-ec2'
+  gem 'kitchen-vagrant', '~> 0.11'
+  gem 'test-kitchen'
   gem 'kitchen-transport-sshtar'
   gem 'serverspec', '~> 2.0'
 end
